@@ -1,7 +1,7 @@
 // create a home page component
 import React from 'react';
 import DisplayData from './Components/DisplayData';
-
+import SMSForm from './Components/SMSForm';
 
 const data = [
     {
@@ -76,7 +76,8 @@ const Home = () => {
         <div className='Home'>
             <h1>Call Logs</h1>
             {/* display the data here from the database */}
-            <DisplayData data={data} />
+            {/* <DisplayData data={data} /> */}
+            <SMSForm />
         </div>
     );
     }
