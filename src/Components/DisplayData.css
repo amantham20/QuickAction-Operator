@@ -26,3 +26,14 @@
     background-color: #e0e0e0;
 }
   
+.filter-container {
+    gap: 1.5em;
+    margin: 20px;
+    margin-bottom: 20px;
+}
+
+.filter select{
+
+    margin-right: 30px;
+    margin-left: 10px;
+}

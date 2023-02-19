@@ -2,6 +2,8 @@
 import React from 'react';
 import DisplayData from './Components/DisplayData';
 import SMSForm from './Components/SMSForm';
+import { useState } from 'react';
+import './Home.css';
 
 const data = [
     {
@@ -72,12 +74,20 @@ const data = [
 ];
 
 const Home = () => {
+    const [showDisplayData, setShowDisplayData] = useState(true);
+
+    const toggleDisplayData = () => {
+        setShowDisplayData(!showDisplayData);
+    }
+
     return (
         <div className='Home'>
-            <h1>Call Logs</h1>
-            {/* display the data here from the database */}
-            {/* <DisplayData data={data} /> */}
-            <SMSForm />
+            <nav className='nav-bar'>
+                <button onClick={toggleDisplayData}>
+                    {showDisplayData ? 'Show SMS Form' : 'Show Call Logs'}
+                </button>
+            </nav>
+            {showDisplayData ? <DisplayData data={data}/> : <SMSForm />}
         </div>
     );
     }

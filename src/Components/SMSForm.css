@@ -1,24 +1,30 @@
 .sms-form {
-    text-align: left;
-    padding: 1em;
-  }
-  .sms-form label {
-    display: block;
-  }
-  .sms-form input,
-  .sms-form textarea {
-    font-size: 1em;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .sms-form div {
-    margin-bottom: 0.5em;
-  }
-  .sms-form button {
-    font-size: 1em;
-    width: 100%;
-  }
-  .sms-form.error {
-    outline: 2px solid #f00;
-  }
+  text-align: center;
+  padding: 4em;
+}
+
+.sms-form label {
+  display: block;
+  font-size: 1.2em;
+  text-align: left;
+}
+.sms-form input,
+.sms-form textarea {
+  font-size: 1em;
+  width: 100%;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+
+}
+.sms-form div {
+  margin-bottom: 0.5em;
+}
+.sms-form button {
+  font-size: 1em;
+  width: 30%;
   
+}
+.sms-form.error {
+  outline: 2px solid #f00;
+}
