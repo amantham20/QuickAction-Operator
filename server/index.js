@@ -2,10 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 var cors = require('cors');
+require('dotenv').config();
 
 const client = require('twilio')(
-    'AC9acefc361393f95b680acf9990cad003',
-    '7a73055861ae7a8a775a34ebd9a24b34'
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
 );
 
 const app = express();
@@ -16,9 +17,7 @@ app.use(pino);
 app.use(cors());
 
 app.get('/', (req, res) => {
-
     res.send('Hello World!');
-
 });
 
 app.get('/api/greeting', (req, res) => {
