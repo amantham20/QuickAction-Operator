@@ -34,7 +34,7 @@ const DisplayData = ({ data }) => {
       {filteredData.map((person, index) => (
         <div key={index} className="person-container">
           <h2>{person.name}</h2>
-          <p>Phone:<a href="tel:{+1person.phone}">{person.phone}</a></p>
+          <p>Phone:<a href="tel:{+1person.phone}">{person.phoneNum}</a></p>
           <p>Location: {person.location}</p>
           <p>Room: {person.room}</p>
           <p>Floor: {person.floor}</p>
