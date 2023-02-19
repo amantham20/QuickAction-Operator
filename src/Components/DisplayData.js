@@ -3,19 +3,23 @@ import './DisplayData.css';
 import  { useState, useRef } from 'react';
 import { db } from '../firebase.js';
 import { collection, doc, setDoc } from "firebase/firestore"; 
+import SMSForm from './SMSForm';
 
 const DisplayData = ({ data }) => {
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedFloor, setSelectedFloor] = useState('');
+  const [selectedSMSClicked, setSelectedSMSClicked] = useState(false);
+  const [selectedPhone, setSelectedPhone] = useState('');
 
   // make the filterdata filter location and floor
   const filteredData = selectedLocation && selectedFloor ? data.filter(person => person.location === selectedLocation && person.floor === selectedFloor) : data;
 
-  // convert the time to a readable format 
-  // right now it's in nt format with nanoseconds and seconds 
-  // we want to convert it to a string with the format of MM/DD/YYYY HH:MM:SS
-
-
+  const handlePhoneClick = (e, phoneNumber) => {
+    e.preventDefault();
+    setSelectedSMSClicked (!selectedSMSClicked);
+    console.log(phoneNumber);
+    setSelectedPhone(phoneNumber);
+  }
 
   const toggleSafeField = (person) => async () => {
     console.log(person);
@@ -56,8 +60,7 @@ const DisplayData = ({ data }) => {
       {filteredData.map((person, index) => (
         <div key={index} className="person-container">
           <h2>{person.name}</h2>
-          <p>Phone: <a href="">{person.phoneNumber}</a></p>
-          {/* <p>Phone:<a href="tel:{+1person.phone}" onClick={handlePhoneClick(person.phoneNum)}>{person.phoneNum}</a></p> */}
+          <p>Phone: <a href="" onClick={(e) => {handlePhoneClick(e, person.phoneNumber)}}>{person.phoneNumber}</a></p>
           <p>Location: {person.location}</p>
           <p>Room: {person.roomNumber}</p>
           <p>Floor: {person.floor}</p>
@@ -74,6 +77,7 @@ const DisplayData = ({ data }) => {
         </div>
       ))}
     </div>
+    {selectedSMSClicked ? <SMSForm num={selectedPhone}/> : null}
     </>
   );
 };

@@ -6,7 +6,7 @@ class SMSForm extends Component {
       super(props);
       this.state = {
         message: {
-          to: '',
+          to: this.props.num ?  this.props.num : '',
           body: ''
         },
         submitting: false,
